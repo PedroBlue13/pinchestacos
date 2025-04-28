@@ -26,7 +26,19 @@
   --color-separate: #cccccc;
   --color-yellow: #dfd43d;
   --color-bglogo: #020f3b;
+  --mexican-red: #D62828;      /* Vermelho vibrante */
+  --mexican-green: #006400;    /* Verde bandeira mexicana */
+  --mexican-yellow: #FFBE0B;   /* Amarelo sol */
+  --mexican-pink: #FF206E;     /* Rosa mexicano */
+  --mexican-turquoise: #2EC4B6; /* Turquesa */
+  --mexican-orange: #F77F00;   /* Laranja quente */
+  --mexican-red: #D62828;      /* Vermelho vibrante */
+  --mexican-green: #006400;    /* Verde bandeira mexicana */
+  --mexican-yellow: #FFBE0B;   /* Amarelo sol */
+  --mexican-pink: #FF206E;     /* Rosa mexicano */
+  --mexican-turquoise: #2EC4B6; /* Turquesa */
 }
+
 
 html,
 body {
@@ -93,6 +105,81 @@ b {
   height: 100%;
 }
 
+/* Cores inspiradas na arte mexicana */
+
+
+
+/* Estilo base para botões sociais */
+.btn-social {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: 2px solid currentColor;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+}
+
+/* Efeito de borda decorativa inspirado em padrões mexicanos */
+.btn-social::before {
+  content: "";
+  position: absolute;
+  height: calc(100% - 8px);
+  width: calc(100% - 8px);
+  border: 1px dashed #FFF;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+  opacity: 0.8;
+}
+
+/* Estilo do ícone */
+.btn-social i {
+  font-size: 18px;
+  color: #FFF;
+  position: relative;
+  z-index: 2;
+}
+
+/* Instagram - gradiente inspirado em cores mexicanas */
+.btn-instagram {
+  background: linear-gradient(45deg, var(--mexican-pink), var(--mexican-yellow));
+  color: #FFF;
+}
+
+.btn-instagram:hover {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+}
+
+/* WhatsApp - verde com toques mexicanos */
+.btn-whatsapp {
+  background: var(--mexican-green);
+  color: #FFF;
+}
+
+.btn-whatsapp:hover {
+  transform: rotate(-10deg) scale(1.1);
+  background: linear-gradient(45deg, var(--mexican-green), var(--mexican-turquoise));
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+}
+
+/* Adicione versões festivas para ocasiões especiais */
+.fiesta-mode .btn-social {
+  animation: rainbow-border 4s linear infinite;
+}
+
+@keyframes rainbow-border {
+  0% { border-color: var(--mexican-red); }
+  25% { border-color: var(--mexican-yellow); }
+  50% { border-color: var(--mexican-green); }
+  75% { border-color: var(--mexican-turquoise); }
+  100% { border-color: var(--mexican-red); }
+}
 /* banner */
 .banner{
   position: relative;
@@ -217,14 +304,45 @@ b {
 .card-banner {
   height: 450px;
   width: 450px;
-  border-radius: 170px;
+  border-radius: 50%; /* Completamente redondo */
   background-color: var(--color-red2);
   position: absolute;
   top: 50%;
-  left: 75%; /* Centraliza horizontalmente */
+  left: 75%;
   transform: translate(-50%, -50%);
   z-index: 1;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
 }
+
+/* Adicionando a borda pontilhada no estilo mexicano - agora circular */
+.card-banner::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 3px dashed var(--mexican-yellow);
+  border-radius: 50%; /* Mantendo o formato circular */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Adicionando uma segunda borda pontilhada para efeito decorativo */
+.card-banner::after {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  border: 2px dashed var(--mexican-red);
+  border-radius: 50%; /* Mantendo o formato circular */
+  z-index: 1;
+  pointer-events: none;
+}
+
 
 .img-banner img {
   position: absolute;
@@ -456,8 +574,141 @@ b {
   background: #FF8C00;
   transform: translateX(3px);
 }
+/* 
+LOCALIZACAO */
+  /* Cores inspiradas na arte mexicana */
 
 
+  /* Estilo base para títulos */
+  .title b {
+    color: var(--mexican-red);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .title b::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--mexican-yellow), var(--mexican-red), var(--mexican-green));
+  }
+  
+  .color-primary {
+    color: var(--mexican-red);
+  }
+  
+  /* Estilo base para todos os botões */
+  .btn {
+    border-radius: 30px;
+    padding: 10px 18px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  
+  /* Efeito de borda decorativa inspirado em padrões mexicanos */
+  .btn::before {
+    content: "";
+    position: absolute;
+    height: calc(100% - 8px);
+    width: calc(100% - 8px);
+    border: 1px dashed rgba(255,255,255,0.7);
+    border-radius: 25px;
+    top: 4px;
+    left: 4px;
+  }
+
+  /* Efeito hover para botões */
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  }
+  
+  /* Botão WhatsApp com tema mexicano verde */
+  .btn-green {
+    background: var(--mexican-green);
+    color: white;
+  }
+  
+  .btn-green:hover {
+    background: linear-gradient(45deg, var(--mexican-green), var(--mexican-turquoise));
+  }
+  
+  /* Botão Instagram com tema mexicano rosa/amarelo */
+  .btn-purple {
+    background: linear-gradient(45deg, var(--mexican-pink), var(--mexican-yellow));
+    color: white;
+  }
+  
+  .btn-purple:hover {
+    background: linear-gradient(45deg, var(--mexican-yellow), var(--mexican-pink));
+  }
+  
+  /* Botão Localização com tema mexicano azul */
+  .btn-blue2 {
+    background: var(--mexican-turquoise);
+    color: white;
+  }
+  
+  .btn-blue2:hover {
+    background: linear-gradient(45deg, var(--mexican-turquoise), var(--mexican-blue));
+  }
+  
+  /* Ícones à esquerda dos botões */
+  .icon-left {
+    margin-right: 8px;
+    display: inline-block;
+  }
+
+  /* Estilizando as informações de contato */
+  .text-bio, .text-ref360 {
+    padding: 8px 0;
+    margin-top: 12px;
+    position: relative;
+  }
+  
+  .text-ref360 .icon-left {
+    color: var(--mexican-orange);
+    margin-right: 10px;
+  }
+  
+  /* Container do mapa com borda estilizada */
+  .map-container {
+    border: 4px solid var(--mexican-yellow);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  .map-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--mexican-red), var(--mexican-green), var(--mexican-yellow));
+    z-index: 1;
+  }
+  
+  /* Animações personalizadas */
+  @keyframes mexican-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .animate__flipInX {
+    animation-duration: 1.5s;
+  }
 
 
 /* footer */

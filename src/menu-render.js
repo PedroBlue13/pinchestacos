@@ -235,32 +235,38 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       // Botão de adicionar ao carrinho
-      if (e.target.closest('.btn-add')) {
-        const btnAdd = e.target.closest('.btn-add');
-        const contadorElement = btnAdd.previousElementSibling.previousElementSibling;
-        const contador = parseInt(contadorElement.textContent);
-        
-        if (contador > 0) {
-          const cardItem = btnAdd.closest('.card-item');
-          const nomeProduto = cardItem.querySelector('.title-produto b').textContent;
-          const precoProduto = cardItem.querySelector('.price-produto b').textContent;
-          
-          // Adicionar ao carrinho (simulação)
-          console.log(`Adicionado ao carrinho: ${contador}x ${nomeProduto} - ${precoProduto}`);
-          
-          // Feedback visual
-          btnAdd.classList.add('added');
-          setTimeout(() => {
-            btnAdd.classList.remove('added');
-          }, 500);
-          
-          // Reset contador
-          contadorElement.textContent = '0';
-          
-          // Mostrar notificação
-          mostrarNotificacao(`${contador}x ${nomeProduto} adicionado ao carrinho!`);
-        }
-      }
+// Botão de adicionar ao carrinho
+if (e.target.closest('.btn-add')) {
+  const btnAdd = e.target.closest('.btn-add');
+  const contadorElement = btnAdd.previousElementSibling.previousElementSibling;
+  const contador = parseInt(contadorElement.textContent);
+  
+  if (contador > 0) {
+    const cardItem = btnAdd.closest('.card-item');
+    const nomeProduto = cardItem.querySelector('.title-produto b').textContent;
+    const precoProduto = cardItem.querySelector('.price-produto b').textContent;
+    const imagemProduto = cardItem.querySelector('.img-produto img').src;
+    const preco = parseFloat(precoProduto.replace('R$', '').replace(',', '.').trim());
+    
+    // Adicionar ao carrinho usando a função global
+    if (window.adicionarProdutoAoCarrinho) {
+      window.adicionarProdutoAoCarrinho(nomeProduto, contador, preco, imagemProduto);
+    } else {
+      // Fallback caso a função global não esteja disponível
+      console.log(`Adicionado ao carrinho: ${contador}x ${nomeProduto} - ${precoProduto}`);
+      mostrarNotificacao(`${contador}x ${nomeProduto} adicionado ao carrinho!`);
+    }
+    
+    // Feedback visual
+    btnAdd.classList.add('added');
+    setTimeout(() => {
+      btnAdd.classList.remove('added');
+    }, 500);
+    
+    // Reset contador
+    contadorElement.textContent = '0';
+  }
+}
     });
   }
   

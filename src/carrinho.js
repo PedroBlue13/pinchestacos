@@ -1,14 +1,77 @@
-// carrinho.js - Sistema de carrinho para o site mexicano
+// carrinho.js - Sistema de carrinho refatorado para o site mexicano
 let carrinhoItens = [];
 let etapaAtual = 1;
 let dadosEntrega = { nome: '', telefone: '', rua: '', numero: '', bairro: '', complemento: '', referencia: '' };
 let formaPagamento = { metodo: 'dinheiro', troco: 0, observacoes: '' };
 
-document.addEventListener('DOMContentLoaded', function() {
+// Função centralizada para adicionar produtos ao carrinho
+// Exposta globalmente para ser acessível a outros scripts
+window.adicionarProdutoAoCarrinho = function(nome, quantidade, preco, imagem) {
+  console.log('Função centralizada: adicionando ao carrinho:', { nome, quantidade, preco, imagem });
+  
+  // Sempre recupere o estado atual do localStorage
   const carrinhoSalvo = localStorage.getItem('carrinhoMexicano');
+  
+  // Inicialize o carrinho a partir do localStorage ou como um array vazio
   if (carrinhoSalvo) {
-    carrinhoItens = JSON.parse(carrinhoSalvo);
+    try {
+      carrinhoItens = JSON.parse(carrinhoSalvo);
+      console.log('Carrinho recuperado do localStorage:', carrinhoItens);
+    } catch (e) {
+      console.error('Erro ao carregar carrinho:', e);
+      carrinhoItens = [];
+    }
+  } else {
+    console.log('Nenhum carrinho encontrado no localStorage, iniciando vazio');
+    carrinhoItens = [];
+  }
+  
+  // Encontrar item existente ou adicionar novo
+  const itemExistente = carrinhoItens.find(item => item.nome === nome);
+  
+  if (itemExistente) {
+    console.log('Item já existe, atualizando quantidade');
+    itemExistente.quantidade += quantidade;
+  } else {
+    console.log('Adicionando novo item');
+    carrinhoItens.push({ nome, quantidade, preco, imagem });
+  }
+  
+  console.log('Carrinho atualizado:', carrinhoItens);
+  console.log('Total de itens no carrinho:', carrinhoItens.length);
+  
+  // Salvar no localStorage
+  localStorage.setItem('carrinhoMexicano', JSON.stringify(carrinhoItens));
+  
+  // Verificar se foi salvo corretamente
+  const verificacao = localStorage.getItem('carrinhoMexicano');
+  console.log('Verificação do localStorage após salvar:', verificacao);
+  console.log('Número de itens após verificação:', JSON.parse(verificacao).length);
+  
+  // Atualizar a interface
+  atualizarIconeCarrinho();
+  mostrarNotificacao(`${quantidade}x ${nome} adicionado ao carrinho!`);
+  
+  return carrinhoItens;
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Inicializando carrinho...');
+  const carrinhoSalvo = localStorage.getItem('carrinhoMexicano');
+  console.log('Carrinho salvo no localStorage:', carrinhoSalvo);
+  
+  if (carrinhoSalvo) {
+    try {
+      carrinhoItens = JSON.parse(carrinhoSalvo);
+      console.log('Carrinho carregado com sucesso:', carrinhoItens);
+      console.log('Número de itens carregados:', carrinhoItens.length);
+    } catch (e) {
+      console.error('Erro ao carregar carrinho:', e);
+      carrinhoItens = [];
+    }
     atualizarIconeCarrinho();
+  } else {
+    console.log('Nenhum carrinho salvo encontrado');
   }
   
   const btnCarrinho = document.getElementById('btn-carrinho');
@@ -18,48 +81,82 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function configurarBotoesAddCarrinho() {
-  document.querySelectorAll('.btn-add').forEach(btn => {
-    btn.addEventListener('click', function() {
+  // Adicionar log para debug
+  console.log('Configurando botões de adicionar - total:', document.querySelectorAll('.btn-add').length);
+  
+  // Assegurar que todos os botões de adicionar sejam selecionados
+  document.querySelectorAll('.btn-add').forEach((btn, index) => {
+    console.log(`Configurando botão ${index}`);
+    
+    // Remover event listeners existentes para evitar duplicação
+    const clonedBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(clonedBtn, btn);
+    
+    clonedBtn.addEventListener('click', function() {
       const cardItem = this.closest('.card-item');
+      if (!cardItem) {
+        console.error('Elemento .card-item não encontrado para o botão', index);
+        return;
+      }
+      
       const contadorElement = this.previousElementSibling.previousElementSibling;
+      if (!contadorElement) {
+        console.error('Elemento contador não encontrado');
+        return;
+      }
+      
       const quantidade = parseInt(contadorElement.textContent);
       
       if (quantidade > 0) {
-        const nome = cardItem.querySelector('.title-produto b').textContent;
-        const preco = parseFloat(cardItem.querySelector('.price-produto b').textContent.replace('R$', '').replace(',', '.').trim());
-        const imagem = cardItem.querySelector('.img-produto img').src;
+        const nomeElement = cardItem.querySelector('.title-produto b');
+        const precoElement = cardItem.querySelector('.price-produto b');
+        const imagemElement = cardItem.querySelector('.img-produto img');
         
-        adicionarAoCarrinho(nome, quantidade, preco, imagem);
+        if (!nomeElement || !precoElement || !imagemElement) {
+          console.error('Elementos do produto não encontrados', { 
+            nome: !!nomeElement, 
+            preco: !!precoElement, 
+            imagem: !!imagemElement 
+          });
+          return;
+        }
+        
+        const nome = nomeElement.textContent;
+        const preco = parseFloat(precoElement.textContent.replace('R$', '').replace(',', '.').trim());
+        const imagem = imagemElement.src;
+        
+        console.log('Adicionando ao carrinho:', { nome, quantidade, preco, imagem });
+        window.adicionarProdutoAoCarrinho(nome, quantidade, preco, imagem);
         contadorElement.textContent = '0';
       }
     });
   });
 }
 
-function adicionarAoCarrinho(nome, quantidade, preco, imagem) {
-  const itemExistente = carrinhoItens.find(item => item.nome === nome);
-  
-  if (itemExistente) {
-    itemExistente.quantidade += quantidade;
-  } else {
-    carrinhoItens.push({ nome, quantidade, preco, imagem });
-  }
-  
-  localStorage.setItem('carrinhoMexicano', JSON.stringify(carrinhoItens));
-  atualizarIconeCarrinho();
-  mostrarNotificacao(`${quantidade}x ${nome} adicionado ao carrinho!`);
-}
-
 function atualizarIconeCarrinho() {
   const contadorCarrinho = document.querySelector('.carrinho-contador');
   if (contadorCarrinho) {
-    contadorCarrinho.textContent = carrinhoItens.reduce((total, item) => total + item.quantidade, 0);
+    const totalItens = carrinhoItens.reduce((total, item) => total + item.quantidade, 0);
+    console.log('Atualizando ícone do carrinho com total:', totalItens);
+    contadorCarrinho.textContent = totalItens;
     contadorCarrinho.classList.add('pulse');
     setTimeout(() => contadorCarrinho.classList.remove('pulse'), 500);
   }
 }
 
 function abrirCarrinho() {
+  console.log('Abrindo carrinho...');
+  // Recarregar o carrinho do localStorage antes de abrir
+  const carrinhoSalvo = localStorage.getItem('carrinhoMexicano');
+  if (carrinhoSalvo) {
+    try {
+      carrinhoItens = JSON.parse(carrinhoSalvo);
+      console.log('Carrinho recarregado do localStorage ao abrir:', carrinhoItens.length, 'itens');
+    } catch (e) {
+      console.error('Erro ao recarregar carrinho:', e);
+    }
+  }
+  
   let modalCarrinho = document.getElementById('modalCarrinho');
   
   if (!modalCarrinho) {
@@ -76,6 +173,9 @@ function abrirCarrinho() {
 }
 
 function renderizarEtapaCarrinho() {
+  console.log('Renderizando etapa do carrinho:', etapaAtual);
+  console.log('Número de itens no carrinho para renderizar:', carrinhoItens.length);
+  
   const modalCarrinho = document.getElementById('modalCarrinho');
   if (!modalCarrinho) return;
   
@@ -85,7 +185,7 @@ function renderizarEtapaCarrinho() {
     <div class="modal-conteudo">
       <div class="modal-header">
         <h2>${titulos[etapaAtual - 1]}</h2>
-        <button class="btn-fechar-modal" onclick="fecharCarrinho()">&times;</button>
+        <button class="btn-fechar-modal">&times;</button>
       </div>
       <div class="modal-body">
         <div class="etapas-carrinho">
@@ -96,47 +196,58 @@ function renderizarEtapaCarrinho() {
         ${etapaAtual === 1 ? renderizarEtapa1() : etapaAtual === 2 ? renderizarEtapa2() : renderizarEtapa3()}
       </div>
       <div class="modal-footer">
-        ${etapaAtual > 1 ? `<button class="btn btn-voltar" onclick="voltarEtapa()">Voltar</button>` : ''}
+        ${etapaAtual > 1 ? `<button class="btn btn-voltar">Voltar</button>` : ''}
         ${etapaAtual < 3 ? 
           `<button class="btn btn-continuar ${carrinhoItens.length === 0 && etapaAtual === 1 ? 'disabled' : ''}" 
-            onclick="avancarEtapa()" ${carrinhoItens.length === 0 && etapaAtual === 1 ? 'disabled' : ''}>Continuar</button>` : 
-          `<button class="btn btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>`}
+            ${carrinhoItens.length === 0 && etapaAtual === 1 ? 'disabled' : ''}>Continuar</button>` : 
+          `<button class="btn btn-finalizar">Finalizar Pedido</button>`}
       </div>
     </div>
   `;
   
   modalCarrinho.innerHTML = conteudoModal;
-    // Adicionar eventos após renderizar o conteúdo
-    const btnFechar = modalCarrinho.querySelector('.btn-fechar-modal');
-    if (btnFechar) btnFechar.addEventListener('click', fecharCarrinho);
-    
-    if (etapaAtual > 1) {
-      const btnVoltar = modalCarrinho.querySelector('.btn-voltar');
-      if (btnVoltar) btnVoltar.addEventListener('click', voltarEtapa);
-    }
-    
-    if (etapaAtual < 3) {
-      const btnContinuar = modalCarrinho.querySelector('.btn-continuar');
-      if (btnContinuar && !btnContinuar.hasAttribute('disabled')) {
-        btnContinuar.addEventListener('click', avancarEtapa);
-      }
-    } else {
-      const btnFinalizar = modalCarrinho.querySelector('.btn-finalizar');
-      if (btnFinalizar) btnFinalizar.addEventListener('click', finalizarPedido);
-    }
-    
-    if (etapaAtual === 1) configurarBotoesQuantidadeCarrinho();
-    else if (etapaAtual === 2) configurarEventosFormularioEntrega();
-    else configurarEventosFormaPagamento();
-  }if (etapaAtual === 1 && carrinhoItens.length === 0) {
-    const btnContinuarComprando = modalCarrinho.querySelector('.btn-continuar-comprando');
-    if (btnContinuarComprando) btnContinuarComprando.addEventListener('click', fecharCarrinho);
+  
+  // Adicionar eventos após renderizar o conteúdo
+  const btnFechar = modalCarrinho.querySelector('.btn-fechar-modal');
+  if (btnFechar) btnFechar.addEventListener('click', fecharCarrinho);
+  
+  if (etapaAtual > 1) {
+    const btnVoltar = modalCarrinho.querySelector('.btn-voltar');
+    if (btnVoltar) btnVoltar.addEventListener('click', voltarEtapa);
   }
   
-
+  if (etapaAtual < 3) {
+    const btnContinuar = modalCarrinho.querySelector('.btn-continuar');
+    if (btnContinuar && !btnContinuar.hasAttribute('disabled')) {
+      btnContinuar.addEventListener('click', avancarEtapa);
+    }
+  } else {
+    const btnFinalizar = modalCarrinho.querySelector('.btn-finalizar');
+    if (btnFinalizar) btnFinalizar.addEventListener('click', finalizarPedido);
+  }
   
+  // Configurar eventos específicos para cada etapa
+  if (etapaAtual === 1) {
+    setTimeout(() => {
+      configurarBotoesQuantidadeCarrinho();
+      
+      if (carrinhoItens.length === 0) {
+        const btnContinuarComprando = modalCarrinho.querySelector('.btn-continuar-comprando');
+        if (btnContinuarComprando) btnContinuarComprando.addEventListener('click', fecharCarrinho);
+      }
+    }, 100); // Pequeno delay para garantir que o DOM foi totalmente atualizado
+  } 
+  else if (etapaAtual === 2) {
+    configurarEventosFormularioEntrega();
+  }
+  else {
+    configurarEventosFormaPagamento();
+  }
+}
 
 function renderizarEtapa1() {
+  console.log('Renderizando etapa 1 com', carrinhoItens.length, 'itens');
+  
   if (carrinhoItens.length === 0) {
     return `
       <div class="carrinho-vazio">
@@ -150,12 +261,13 @@ function renderizarEtapa1() {
   let conteudo = `<div class="itens-carrinho">`;
   
   carrinhoItens.forEach((item, index) => {
+    console.log('Renderizando item:', item.nome, 'na posição', index);
     const subtotal = (item.preco * item.quantidade).toLocaleString('pt-BR', {
       style: 'currency', currency: 'BRL'
     });
     
     conteudo += `
-      <div class="item-carrinho">
+      <div class="item-carrinho" data-nome="${item.nome}">
         <div class="item-imagem"><img src="${item.imagem}" alt="${item.nome}" /></div>
         <div class="item-detalhes">
           <h3>${item.nome}</h3>
@@ -188,6 +300,55 @@ function renderizarEtapa1() {
   `;
   
   return conteudo;
+}
+
+function configurarBotoesQuantidadeCarrinho() {
+  setTimeout(() => {
+    console.log('Configurando botões de quantidade do carrinho - após delay');
+    console.log('Número de itens no carrinho:', carrinhoItens.length);
+    console.log('Número de botões +:', document.querySelectorAll('.btn-mais-carrinho').length);
+    console.log('Número de botões -:', document.querySelectorAll('.btn-menos-carrinho').length);
+    console.log('Número de botões remover:', document.querySelectorAll('.btn-remover').length);
+    
+    document.querySelectorAll('.btn-mais-carrinho').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        console.log('Incrementando item no índice:', index);
+        if (index >= 0 && index < carrinhoItens.length) {
+          carrinhoItens[index].quantidade++;
+          atualizarCarrinho();
+        } else {
+          console.error('Índice inválido ao incrementar:', index);
+        }
+      });
+    });
+    
+    document.querySelectorAll('.btn-menos-carrinho').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        console.log('Decrementando item no índice:', index);
+        if (index >= 0 && index < carrinhoItens.length && carrinhoItens[index].quantidade > 1) {
+          carrinhoItens[index].quantidade--;
+          atualizarCarrinho();
+        } else {
+          console.error('Índice inválido ou quantidade mínima atingida:', index);
+        }
+      });
+    });
+    
+    document.querySelectorAll('.btn-remover').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        console.log('Removendo item no índice:', index);
+        if (index >= 0 && index < carrinhoItens.length) {
+          carrinhoItens.splice(index, 1);
+          atualizarCarrinho();
+        } else {
+          console.error('Índice inválido ao remover:', index);
+        }
+      });
+    });
+  }, 100);
 }
 
 function renderizarEtapa2() {
@@ -287,34 +448,6 @@ function renderizarEtapa3() {
   `;
 }
 
-function configurarBotoesQuantidadeCarrinho() {
-  document.querySelectorAll('.btn-mais-carrinho').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const index = parseInt(this.getAttribute('data-index'));
-      carrinhoItens[index].quantidade++;
-      atualizarCarrinho();
-    });
-  });
-  
-  document.querySelectorAll('.btn-menos-carrinho').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const index = parseInt(this.getAttribute('data-index'));
-      if (carrinhoItens[index].quantidade > 1) {
-        carrinhoItens[index].quantidade--;
-        atualizarCarrinho();
-      }
-    });
-  });
-  
-  document.querySelectorAll('.btn-remover').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const index = parseInt(this.getAttribute('data-index'));
-      carrinhoItens.splice(index, 1);
-      atualizarCarrinho();
-    });
-  });
-}
-
 function configurarEventosFormularioEntrega() {
   const inputTelefone = document.getElementById('telefone');
   if (inputTelefone) {
@@ -377,7 +510,17 @@ function configurarEventosFormaPagamento() {
 }
 
 function atualizarCarrinho() {
+  console.log('Atualizando carrinho. Número de itens a salvar:', carrinhoItens.length);
   localStorage.setItem('carrinhoMexicano', JSON.stringify(carrinhoItens));
+  
+  // Verificar se foi salvo corretamente
+  const carrinhoSalvo = localStorage.getItem('carrinhoMexicano');
+  console.log('Carrinho salvo após atualização:', carrinhoSalvo);
+  if (carrinhoSalvo) {
+    const parsedCarrinho = JSON.parse(carrinhoSalvo);
+    console.log('Número de itens salvos:', parsedCarrinho.length);
+  }
+  
   atualizarIconeCarrinho();
   renderizarEtapaCarrinho();
 }
@@ -437,11 +580,12 @@ function finalizarPedido() {
   
   const totalPedido = carrinhoItens.reduce((total, item) => total + (item.preco * item.quantidade), 0);
   
+  // Usando entidades HTML para emojis
   let mensagem = "🌮 *NOVO PEDIDO PINCHES TACOS* 🌮\n\n";
   
   mensagem += "*ITENS DO PEDIDO:*\n";
   carrinhoItens.forEach(item => {
-    mensagem += `▪️ ${item.quantidade}x ${item.nome} - R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}\n`;
+    mensagem += `• ${item.quantidade}x ${item.nome} - R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}\n`;
   });
   
   mensagem += `\n*TOTAL: R$ ${totalPedido.toFixed(2).replace('.', ',')}*\n\n`;
@@ -463,17 +607,25 @@ function finalizarPedido() {
   
   if (observacoes) mensagem += `\n*OBSERVAÇÕES:*\n${observacoes}\n`;
   
-  const mensagemCodificada = encodeURIComponent(mensagem);
-  const numeroWhatsApp = "554188017564"; // Substitua pelo número real
-  const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
-  
-  carrinhoItens = [];
-  localStorage.removeItem('carrinhoMexicano');
-  atualizarIconeCarrinho();
-  fecharCarrinho();
-  
-  window.open(urlWhatsApp, '_blank');
-  mostrarNotificacao('Pedido enviado com sucesso!', 'sucesso');
+  try {
+    // Simplificar o processo de codificação da URL
+    const numeroWhatsApp = "554188017564"; // Substitua pelo número real
+    
+    // Use encodeURIComponent para codificar toda a mensagem para URL
+    const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+    
+    // Limpar o carrinho após finalizar o pedido
+    carrinhoItens = [];
+    localStorage.removeItem('carrinhoMexicano');
+    atualizarIconeCarrinho();
+    fecharCarrinho();
+    
+    window.open(urlWhatsApp, '_blank');
+    mostrarNotificacao('Pedido enviado com sucesso!', 'sucesso');
+  } catch (e) {
+    console.error("Erro ao enviar mensagem:", e);
+    mostrarNotificacao('Erro ao enviar pedido. Tente novamente.', 'erro');
+  }
 }
 
 function fecharCarrinho() {
