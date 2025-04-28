@@ -19,6 +19,7 @@
   --color-view-menu: #595dd2;
   --color-view-contact: #c0c1db;
   --color-white: #ffffff;
+  --color-mexican-red: rgb(215, 0, 64);
   --color-red: #e02727;
   --color-red2: #c44d40;
   --color-green: #2ecc71;
@@ -69,10 +70,33 @@ b {
   border-top: 4px var(--color-red) solid;
   border-bottom: 4px var(--color-red) solid;
 }
+.navbar-nav .nav-item .nav-link {
+  position: relative;
+  z-index: 1;
+  padding: 8px 15px;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(215, 0, 64, 0.1); /* Vermelho mexicano com transparência */
+  z-index: -1;
+  transition: height 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover::before {
+  height: 100%;
+}
 
 /* banner */
 .banner{
   position: relative;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
 }
 
 .btn-white {
@@ -87,7 +111,7 @@ b {
 .btn-white.active,
 .btn-white:hover {
   color: var(--color-white) !important;
-  background-color: var(--color-primary);
+  background-color: var(--color-mexican-red);
   transform: scale(1.05);
 }
 
@@ -160,7 +184,7 @@ b {
 }
 
 .btn-yellow {
-  background-color: var(--color-red);
+  background-color: var(--color-red2);
   color: var(--color-white) !important;
   border-radius: 20px;
   padding: 15px 25px;
@@ -185,7 +209,6 @@ b {
   text-align: center;
   padding-top: 8px;
 }
-
 .btn-sm {
   padding: 9px 15px !important;
   border-radius: 15px !important;
@@ -195,7 +218,7 @@ b {
   height: 450px;
   width: 450px;
   border-radius: 170px;
-  background-color: var(--color-red);
+  background-color: var(--color-red2);
   position: absolute;
   top: 50%;
   left: 75%; /* Centraliza horizontalmente */
@@ -249,7 +272,7 @@ b {
 
 .btn-yellow:hover {
   transform: scale(1.02);
-  background-color: var(--color-red2)!important;
+  background-color: rgb(215, 0, 64); /* Vermelho mexicano com transparência */
 }
 
 .bg-light {
@@ -266,6 +289,172 @@ b {
   height: 120%;
   width: 120%;
   max-width: 260px;
+}
+
+
+/* cardapio */
+/* Estilos para o dropdown mobile */
+.categoria-dropdown {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: white;
+  color: #333;
+  border: 2px solid #006847;
+  border-radius: 30px;
+  padding: 12px 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  background: white;
+  border-radius: 15px;
+  border: 2px solid #006847;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 104, 71, 0.1);
+}
+
+/* Estilos para os cards do produto (mantidos como estavam) */
+.card-item {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  height: 100%;
+  border: none;
+  position: relative;
+}
+
+.card-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.etiqueta-especial {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #D70040;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.img-produto {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-produto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card-item:hover .img-produto img {
+  transform: scale(1.1);
+}
+
+.title-produto {
+  color: #333;
+  font-size: 1.2rem;
+  padding: 0 15px;
+  margin-bottom: 5px;
+}
+
+.descricao-produto {
+  padding: 0 15px;
+  font-size: 0.85rem;
+  min-height: 60px;
+  margin-bottom: 15px;
+}
+
+.price-produto {
+  color: #D70040;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.add-carrinho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-top: 1px solid #eee;
+}
+
+.btn-menos, .btn-mais {
+  background: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.btn-menos:hover, .btn-mais:hover {
+  background: #F8C300;
+  color: white;
+}
+
+.add-numero-itens {
+  width: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn-add {
+  background: #D70040;
+  color: white;
+  border-radius: 30px;
+  padding: 5px 15px;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+  background: #FF8C00;
+  transform: translateX(3px);
 }
 
 
@@ -536,8 +725,7 @@ footer {
     margin-bottom: 0rem!important;
   }
   .banner{
-    background-color: #b8aa4134 !important;
-    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+    background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png")!important;
     background-size: 200px;
     padding-top: 5rem;
   }
