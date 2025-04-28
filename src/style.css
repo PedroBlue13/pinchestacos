@@ -1,0 +1,586 @@
+@font-face {
+  font-family: "PoppinsMedium";
+  src: url("../fonts/Poppins-Medium.otf");
+}
+@font-face {
+  font-family: "PoppinsRegular";
+  src: url("../fonts/Poppins-Regular.otf");
+}
+
+:root {
+  --color-background: #fffdf7;
+  --color-black: #212121;
+  --color-black-heavy: #000;
+  --color-text: #4f4f4f;
+  --color-text-out: #90908e;
+  --color-primary: #1c9bf7;
+  --color-secondary: #407ae6e5;
+  --color-tertiary: #eed91f49;
+  --color-view-menu: #595dd2;
+  --color-view-contact: #c0c1db;
+  --color-white: #ffffff;
+  --color-red: #e02727;
+  --color-red2: #c44d40;
+  --color-green: #2ecc71;
+  --color-separate: #cccccc;
+  --color-yellow: #dfd43d;
+  --color-bglogo: #020f3b;
+}
+
+html,
+body {
+  font-family: "PoppinsRegular", "Rubik", sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+b {
+  font-family: "PoppinsMedium", "Rubik", sans-serif;
+}
+
+.hidden {
+  display: none !important;
+}
+.kau {
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.color-primary {
+  color: var(--color-red);
+}
+
+.color-nab-white {
+  color: var(--color-white);
+}
+
+.img-logo {
+  border: 3px var(--color-red) solid;
+  border-radius: 70%;
+  margin-left: -25px;
+}
+/* navbar */
+.nav-link {
+  color: var(--color-black);
+  padding-left: 35px !important;
+  padding-right: 35px !important;
+}
+#navbarNavDropdown ul li{
+  border-top: 4px var(--color-red) solid;
+  border-bottom: 4px var(--color-red) solid;
+}
+
+/* banner */
+.banner{
+  position: relative;
+}
+
+.btn-white {
+  background-color: var(--color-white);
+  color: var(--color-black) !important;
+  border-radius: 20px;
+  padding: 15px 25px;
+  font-size: 20px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 1);
+}
+
+.btn-white.active,
+.btn-white:hover {
+  color: var(--color-white) !important;
+  background-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(to bottom, #40e68b, #c0bfbf, #fd2929);
+  color: var(--color-white) !important;
+  border-radius: 20px;
+  padding: 15px 25px;
+  font-size: 20px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 1);
+}
+.btn-whatsapp.active,
+.btn-whatsapp:hover {
+  background-color: var(--color-red2);
+}
+
+.btn-instagram {
+  background: linear-gradient(to bottom, #40e68b, #c0bfbf, #fd2929);
+  color: var(--color-white) !important;
+  border-radius: 20px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 20px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 1);
+}
+
+.btn-instagram.active,
+.btn-instagram:hover {
+  background:var(--color-red2);
+}
+
+.btn-icon {
+  padding-right: 75px;
+}
+
+.btn-icon .icon {
+  display: inline-block;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  right: 10px;
+  margin-top: -8px;
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.Banner {
+  padding-top: 110px;
+  padding-bottom: 220px;
+}
+
+.text-banner {
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.text-banner h1 {
+  color: var(--color-black);
+  font-size: 60px;
+}
+
+.text-banner p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.btn-yellow {
+  background-color: var(--color-red);
+  color: var(--color-white) !important;
+  border-radius: 20px;
+  padding: 15px 25px;
+  font-size: 20px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 1);
+}
+
+.btn-icon-left {
+  padding-left: 70px;
+}
+
+.btn-icon-left span.btn-icon-left {
+  display: inline-block;
+  color: var(--color-primary);
+  background-color: var(--color-primary);
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  margin-left: -60px;
+  margin-top: -8px;
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.btn-sm {
+  padding: 9px 15px !important;
+  border-radius: 15px !important;
+  font-size: 18px !important;
+}
+.card-banner {
+  height: 450px;
+  width: 450px;
+  border-radius: 170px;
+  background-color: var(--color-red);
+  position: absolute;
+  top: 50%;
+  left: 75%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.img-banner img {
+  position: absolute;
+  width: 60%;
+  bottom: 20%;
+  left: 30%;
+  z-index: 2;
+}
+
+.card {
+  border-radius: 20px;
+  padding: 15px 20px;
+  font-size: 20px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 1) !important;
+  border: none !important;
+}
+
+.card-case {
+  width: 370px;
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+  bottom: -75px;
+}
+
+.card-case-name {
+  position: absolute;
+  font-size: 12px;
+  color: var(--color-primary);
+  right: 20px;
+  bottom: 10px;
+}
+
+.btn-menu:hover {
+  transform: scale(1.05);
+}
+
+.btn-cart-pairar {
+  transform: scale(1.02);
+  color: var(--color-white);
+}
+.btn-yellow {
+  transition: transform 0.3s ease, color 0.3s ease; /* Animação suave */
+}
+
+.btn-yellow:hover {
+  transform: scale(1.02);
+  background-color: var(--color-red2)!important;
+}
+
+.bg-light {
+  background-color: #f7eef50a !important;
+  background-image: url("https://www.transparenttextures.com/patterns/large-leather.png");
+  background-size: 200px;
+}
+.contact {
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.logo-contact {
+  height: 120%;
+  width: 120%;
+  max-width: 260px;
+}
+
+
+
+
+/* footer */
+footer {
+  background-color: var(--color-red2);
+}
+
+.logo-footer {
+  width: 150px;
+  border-radius: 100px;
+  margin: 10px;
+}
+
+.container-logo-footer,
+.container-texto-footer,
+.container-redes-footer {
+  display: flex;
+  align-items: center;
+}
+
+.container-logo-footer {
+  justify-content: start;
+}
+
+.container-texto-footer {
+  justify-content: center;
+  color: var(--color-white);
+}
+
+.container-redes-footer {
+  justify-items: end;
+}
+
+/* 
+ * MOBILE CSS ADAPTATIONS
+ * Media queries for responsive design on smaller screens
+ */
+
+/* Base Mobile Styles (applied to screens up to 767px wide) */
+@media (max-width: 767px) {
+  /* 
+   * TYPOGRAPHY ADJUSTMENTS
+   */
+  html, body {
+    font-size: 14px;
+  }
+
+  .text-banner h1 {
+    font-size: 32px;
+  }
+
+  .text-banner p {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  /* 
+   * LAYOUT ADJUSTMENTS
+   */
+  .Banner {
+    padding-top: 60px;
+    padding-bottom: 100px;
+    text-align: center;
+  }
+
+  .servicos {
+    padding: 40px 20px;
+  }
+
+  /* 
+   * NAVBAR ADJUSTMENTS
+   */
+  .nav-link {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    font-size: 14px;
+  }
+
+  .img-logo {
+    margin-left: 0;
+    width: 60px;
+    height: 60px;
+  }
+
+  /* 
+   * BANNER ADJUSTMENTS
+   */
+  .card-banner {
+    height: 250px;
+    width: 250px;
+    border-radius: 125px;
+    left: 50%;
+    top: calc(100% - 125px);
+  }
+
+  .img-banner img {
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+    left: auto;
+    bottom: auto;
+  }
+
+  .text-banner {
+    margin-bottom: 240px; /* Space for the card-banner */
+  }
+
+  /* 
+   * BUTTON ADJUSTMENTS
+   */
+  .btn-white,
+  .btn-whatsapp,
+  .btn-instagram,
+  .btn-yellow {
+    padding: 10px 15px;
+    font-size: 16px;
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .btn-icon {
+    padding-right: 60px;
+  }
+
+  .btn-icon .icon {
+    width: 36px;
+    height: 36px;
+    right: 10px;
+    margin-top: -6px;
+    padding-top: 4px;
+  }
+
+  .btn-icon-left {
+    padding-left: 60px;
+  }
+
+  .btn-icon-left span.btn-icon-left {
+    width: 36px;
+    height: 36px;
+    margin-left: -50px;
+    margin-top: -6px;
+    padding-top: 6px;
+  }
+
+  .btn-sm {
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+  }
+
+  /* 
+   * CARD ADJUSTMENTS
+   */
+  .card {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+
+  .card-case {
+    width: 100%;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+  }
+
+  .card-icon {
+    height: 100px;
+  }
+
+  .card-text {
+    padding: 0 15px;
+    font-size: 14px;
+  }
+
+  .card-text p {
+    font-size: 18px;
+  }
+}
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  .text-banner h1 {
+    font-size: 28px;
+  }
+
+  .card-banner {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    top: calc(100% - 100px);
+  }
+  
+  .text-banner {
+    margin-bottom: 180px;
+  }
+  
+  .btn-white,
+  .btn-whatsapp,
+  .btn-instagram,
+  .btn-yellow {
+    font-size: 14px;
+    max-width: 240px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+}
+
+/* 
+ * UTILITY CLASSES FOR MOBILE
+ * These classes can be added to HTML elements as needed
+ */
+
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Mobile menu styles */
+@media (max-width: 767px) {
+  .mobile-hide {
+    display: none !important;
+  }
+  #navbarNavDropdown {
+    background-color: var(--color-background);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  #navbarNavDropdown ul {
+    flex-direction: column;
+  }
+  
+  #navbarNavDropdown ul li {
+    border-top: 0px var(--color-red) solid;
+    border-bottom: 1px var(--color-red) solid;
+    margin-bottom: 5px;
+  }
+  
+  .navbar-toggler {
+    color: var(--color-background);
+    border: 2px solid var(--color-red);
+    padding: 5px 8px;
+  }
+  .navbar-toggler-icon i {
+    color: var(--color-background) !important;
+  }
+  .Header{
+    background-color: var(--color-red2);
+    margin-top: 0rem!important;
+    margin-bottom: 0rem!important;
+  }
+  .banner{
+    background-color: #b8aa4134 !important;
+    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+    background-size: 200px;
+    padding-top: 5rem;
+  }
+  .burrito_mobile {
+    background-image: url('/public/img/b98b2eeb-ddbb-4c7e-8ca2-0f2959401745.jpeg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%; /* Define uma largura para o elemento */
+    max-width: 400px; /* Largura máxima para não ficar muito grande */
+    height: 200px; /* Altura para a imagem ser visível */
+    margin-left: auto; /* Centralizando com margens automáticas */
+    margin-right: auto;
+    display: block !important; /* Melhor usar block do que flex neste caso */
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+}
+
+/* 
+ * RESPONSIVE GRID FIXES
+ */
+@media (max-width: 767px) {
+  .row [class*="col-"] {
+    margin-bottom: 30px;
+  }
+  
+  /* Center align content in columns */
+  .row [class*="col-"] {
+    text-align: center;
+  }
+  
+  /* Full width images in columns */
+  .row [class*="col-"] img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Background image size for mobile */
+@media (max-width: 767px) {
+  .bg-light {
+    background-size: 100px;
+  }
+}
