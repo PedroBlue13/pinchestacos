@@ -51,7 +51,7 @@ window.adicionarProdutoAoCarrinho = function(nome, quantidade, preco, imagem) {
   // Atualizar a interface
   atualizarIconeCarrinho();
   mostrarNotificacao(`${quantidade}x ${nome} adicionado ao carrinho!`);
-  
+  atualizarBotaoFinalizarPedido();
   return carrinhoItens;
 };
 
@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (btnCarrinho) btnCarrinho.addEventListener('click', abrirCarrinho);
   
   configurarBotoesAddCarrinho();
+  atualizarBotaoFinalizarPedido();
 });
 
 function configurarBotoesAddCarrinho() {
@@ -303,13 +304,7 @@ function renderizarEtapa1() {
 }
 
 function configurarBotoesQuantidadeCarrinho() {
-  setTimeout(() => {
-    console.log('Configurando botões de quantidade do carrinho - após delay');
-    console.log('Número de itens no carrinho:', carrinhoItens.length);
-    console.log('Número de botões +:', document.querySelectorAll('.btn-mais-carrinho').length);
-    console.log('Número de botões -:', document.querySelectorAll('.btn-menos-carrinho').length);
-    console.log('Número de botões remover:', document.querySelectorAll('.btn-remover').length);
-    
+  setTimeout(() => {   
     document.querySelectorAll('.btn-mais-carrinho').forEach(btn => {
       btn.addEventListener('click', function() {
         const index = parseInt(this.getAttribute('data-index'));
@@ -523,6 +518,7 @@ function atualizarCarrinho() {
   
   atualizarIconeCarrinho();
   renderizarEtapaCarrinho();
+  atualizarBotaoFinalizarPedido();
 }
 
 function avancarEtapa() {
@@ -653,3 +649,160 @@ function mostrarNotificacao(mensagem, tipo = 'sucesso') {
     notificacao.classList.remove('mostrar');
   }, 3000);
 }
+
+
+
+// Adicionar esta função ao final do arquivo carrinho.js
+function atualizarBotaoFinalizarPedido() {
+    const btnFinalizarPedido = document.getElementById('btn-finalizar-pedido');
+    
+    // Se o botão ainda não existir, vamos criá-lo
+    if (!btnFinalizarPedido && carrinhoItens.length > 0) {
+      const btnContainer = document.querySelector('.navbar-buttons');
+      
+      if (btnContainer) {
+        const btn = document.createElement('a');
+        btn.id = 'btn-finalizar-pedido';
+        btn.className = 'btn btn-yellow btn-menu mt-4 mr-3 animate__animated animate__flipInX wow';
+        btn.href = '#';
+        btn.textContent = 'Finalizar Pedido';
+        
+        // Inserir antes do botão do carrinho
+        const btnCarrinho = document.getElementById('btn-carrinho');
+        if (btnCarrinho) {
+          btnContainer.insertBefore(btn, btnCarrinho);
+        } else {
+          btnContainer.appendChild(btn);
+        }
+        
+        // Adicionar evento para abrir o carrinho
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          abrirCarrinho();
+        });
+      }
+    } 
+    // Se o botão já existe, mostrá-lo ou ocultá-lo conforme necessário
+    else if (btnFinalizarPedido) {
+      if (carrinhoItens.length > 0) {
+        btnFinalizarPedido.style.display = 'inline-block';
+      } else {
+        btnFinalizarPedido.style.display = 'none';
+      }
+    }
+  }
+
+  // Adicionar esta função no final do seu arquivo carrinho.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Criando o botão "Finalizar Pedido" fixo e o adicionando logo após o cardápio
+    const secaoCardapio = document.getElementById('Cardapio');
+    
+    if (secaoCardapio) {
+      const botaoContainer = document.createElement('div');
+      botaoContainer.className = 'container text-center my-4';
+      
+      const botaoFinalizarPedido = document.createElement('a');
+
+      
+      botaoFinalizarPedido.addEventListener('click', function(e) {
+        e.preventDefault();
+        abrirCarrinho(); // Abre diretamente o carrinho
+      });
+      
+      botaoContainer.appendChild(botaoFinalizarPedido);
+      secaoCardapio.parentNode.insertBefore(botaoContainer, secaoCardapio.nextSibling);
+      
+      // Verifica se há itens no carrinho para mostrar o botão
+      const carrinhoSalvo = localStorage.getItem('carrinhoMexicano');
+      if (carrinhoSalvo) {
+        try {
+          const itens = JSON.parse(carrinhoSalvo);
+          if (itens && itens.length > 0) {
+            botaoFinalizarPedido.style.display = 'inline-block';
+          }
+        } catch (e) {
+          console.error('Erro ao verificar carrinho:', e);
+        }
+      }
+    }
+    
+    // Modificar a função atualizarCarrinho para também atualizar a visibilidade do botão
+    const originalAtualizarCarrinho = window.atualizarCarrinho;
+    window.atualizarCarrinho = function() {
+      // Chama a função original
+      if (typeof originalAtualizarCarrinho === 'function') {
+        originalAtualizarCarrinho.apply(this, arguments);
+      }
+      
+      // Atualiza o botão fixo
+      const botaoFixo = document.getElementById('btn-finalizar-fixo');
+      if (botaoFixo) {
+        botaoFixo.style.display = carrinhoItens.length > 0 ? 'inline-block' : 'none';
+      }
+    };
+    
+    // Modificar a função adicionarProdutoAoCarrinho para atualizar o botão
+    const originalAdicionarProduto = window.adicionarProdutoAoCarrinho;
+    window.adicionarProdutoAoCarrinho = function(nome, quantidade, preco, imagem) {
+      // Chama a função original
+      const resultado = originalAdicionarProduto.apply(this, arguments);
+      
+      // Atualiza o botão fixo
+      const botaoFixo = document.getElementById('btn-finalizar-fixo');
+      if (botaoFixo) {
+        botaoFixo.style.display = 'inline-block';
+      }
+      
+      return resultado;
+    };
+    
+    // Alternativa simples: Botão flutuante sempre visível quando há itens
+    const botaoFlutuante = document.createElement('a');
+    botaoFlutuante.id = 'btn-finalizar-flutuante';
+    botaoFlutuante.className = 'btn btn-yellow animate__animated animate__bounceIn';
+    botaoFlutuante.href = '#';
+    botaoFlutuante.innerHTML = '<i class="fas fa-shopping-cart"></i><span class="ml-2">Finalizar Pedido</span>';
+    botaoFlutuante.style.position = 'fixed';
+    botaoFlutuante.style.bottom = '20px';
+    botaoFlutuante.style.right = '20px';
+    botaoFlutuante.style.zIndex = '9999';
+    botaoFlutuante.style.padding = '10px 15px';
+    botaoFlutuante.style.borderRadius = 'px';
+    botaoFlutuante.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+    botaoFlutuante.style.display = 'none'; // Começa oculto
+    
+    botaoFlutuante.addEventListener('click', function(e) {
+      e.preventDefault();
+      abrirCarrinho(); // Abre diretamente o carrinho
+    });
+    
+    document.body.appendChild(botaoFlutuante);
+    
+    // Verifica inicialmente se há itens no carrinho
+    const carrinhoSalvo = localStorage.getItem('carrinhoMexicano');
+    if (carrinhoSalvo) {
+      try {
+        const itens = JSON.parse(carrinhoSalvo);
+        if (itens && itens.length > 0) {
+          botaoFlutuante.style.display = 'flex';
+        }
+      } catch (e) {
+        console.error('Erro ao verificar carrinho para botão flutuante:', e);
+      }
+    }
+    
+    // Atualize o botão flutuante sempre que o carrinho for atualizado
+    const intervalVerificacao = setInterval(function() {
+      const carrinhoSalvo = localStorage.getItem('carrinhoMexicano');
+      if (carrinhoSalvo) {
+        try {
+          const itens = JSON.parse(carrinhoSalvo);
+          botaoFlutuante.style.display = itens && itens.length > 0 ? 'flex' : 'none';
+        } catch (e) {
+          console.error('Erro ao verificar carrinho:', e);
+        }
+      } else {
+        botaoFlutuante.style.display = 'none';
+      }
+    }, 1000); // Verifica a cada segundo
+  });

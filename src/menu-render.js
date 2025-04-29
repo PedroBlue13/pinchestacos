@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     categorias.forEach(categoria => {
       // Criar botão para desktop
       const botaoDesktop = document.createElement('a');
-      botaoDesktop.className = 'btn btn-white btn-categoria me-2 mr-3';
+      botaoDesktop.className = 'btn btn-white btn-categoria me-2 mr-3 animate__animated animate__rotateInUpLeft  wow';
       botaoDesktop.href = `#${categoria.id}`;
       botaoDesktop.setAttribute('data-categoria', categoria.id);
       botaoDesktop.innerHTML = `
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // HTML do card de produto
       colDiv.innerHTML = `
-        <div class="card card-item">
+        <div class="card card-item animate__animated animate__fadeIn  wow ">
           ${produto.etiqueta ? `<div class="etiqueta-especial">${produto.etiqueta}</div>` : ''}
           <div class="img-produto">
             <img src="${produto.imagem}" alt="${produto.nome}" />
@@ -234,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 150);
       }
       
-      // Botão de adicionar ao carrinho
 // Botão de adicionar ao carrinho
 if (e.target.closest('.btn-add')) {
   const btnAdd = e.target.closest('.btn-add');
@@ -307,7 +306,7 @@ if (e.target.closest('.btn-add')) {
         <div class="categoria-dropdown d-md-none">
           <div class="dropdown-toggle" id="categoriasDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>Escolha uma categoria</span>
-            <i class="fas fa-chevron-down ml-2"></i>
+            
           </div>
           <div class="dropdown-menu" aria-labelledby="categoriasDropdown">
             <!-- Itens do dropdown serão inseridos aqui -->

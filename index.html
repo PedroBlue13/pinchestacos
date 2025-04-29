@@ -14,36 +14,50 @@
     <title>Pinches Tacos</title>
   </head>
   <body>
+
+      
     <section class="Header py-4 banner">
+      <div id="atalho_carrin" class="atalho-carrinho d-none">
+        <div class="atalho-texto">Itens na sacola</div>
+        <div class="atalho-contador">0</div>
+      </div>
       <div class="container">
-        <nav class="navbar navbar-expand-lg pl-0 pr-0">
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Botão do menu à esquerda -->
           <button
-            class="navbar-toggler"
+            class="navbar-toggler d-block d-md-none"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown"
           >
-          <i class="fas fa-bars"></i>
-
+            <i class="fas fa-bars"></i>
           </button>
+          
+          <!-- Logo mobile à direita -->
+          <a class="navbar-brand d-lg-none ms-auto" href="#">
+            <img src="./img/logo/437083454_7486982734681507_8992639723821251289_n.jpg" alt="Pinches Tacos Logo" class="navbar-logo-mobile img-logo">
+          </a>
+        </div>
+        
+        <nav class="navbar navbar-expand-lg pl-0 pr-0">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto d-flex align-items-center ml-auto mr-auto">
               <li class="nav-item">
                 <a href="#contact" class="nav-link"> <b>LOCALIZAÇÃO</b></a>
               </li>
-
+    
               <li class="nav-item">
-                <a href="https://www.ifood.com.br/delivery/curitiba-pr/pinches-tacos----comida-mexicana-agua-verde/51c54763-f475-4708-a676-da5702b099d2" class="nav-link"><b>PEÇA PELO DELIVERY</b></a>
+                <a href="https://www.ifood.com.br/delivery/curitiba-pr/pinches-tacos----comida-mexicana-agua-verde/51c54763-f475-4708-a676-da5702b099d2" class="nav-link"><b>PEÇA PELO IFOOD</b></a>
               </li>
               <a class="d-none d-md-block" href="">
                 <img src="./img/logo/437083454_7486982734681507_8992639723821251289_n.jpg" class="img-logo mx-4 my-3" width="160" alt="" />
               </a>
-
+    
               <li class="nav-item">
                 <a href="#Cardapio" class="nav-link"><b>CARDÁPIO DIGITAL</b></a>
               </li>
               <li class="nav-item">
-                <a  id="btn-carrinho" class="nav-link"><b>MI CARRITO</b>
+                <a id="btn-carrinho" class="nav-link"><b>MI CARRITO</b>
                   <span class="carrinho-contador">0</span></a>
               </li>
             </ul>
@@ -60,7 +74,7 @@
               <div class="d-block d-md-none burrito_mobile" style="height: 200px;"></div>
 
               <h1>
-                <b>Escolha seu <b class="color-primary kau">TACO</b> favorito!</b>
+                <b>Escolha seu <b class="color-primary kau">PLATO</b> favorito!</b>
               </h1>
               <p>
                 Aproveite nosso Cardapio, Comida mexicana de rua para
@@ -71,13 +85,15 @@
               </a>
             </div>
     
-            <a class="btn btn-sm btn-instagram btn-social mt-4 mr-3 mobile-hide" href="">
-              <i class="fab fa-instagram "></i>
-            </a>
-    
-            <a class="btn btn-sm btn-whatsapp btn-social mt-4 mr-3 mobile-hide" href="">
-              <i class="fab fa-whatsapp"></i>
-            </a>
+            <div class="d-none d-md-block">
+              <a class="btn btn-sm btn-instagram btn-social mt-4 mr-3" href="">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a class="btn btn-sm btn-whatsapp btn-social mt-4 mr-3 mobile-hide" href="">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+
           </div>
           <div class="col-12 col-md-6">
             <div class="card-banner d-none d-md-block"></div>
@@ -102,7 +118,7 @@
           </div>
 
     
-          <div class="col-12 container-menu text-center py-4">
+          <div class="col-12 container-menu text-center py-4 ">
 
             
             <!-- Apenas o dropdown para mobile -->
@@ -234,7 +250,7 @@
         </div>
         <div class="col-6 container-texto-footer">
           <p class="mb-0">
-            <b>Picnhes Tacos</b> &copy; Todos direitos reservados
+            <b>Pinches Tacos</b> &copy; Todos direitos reservados
           </p>
         </div>
 
@@ -245,12 +261,14 @@
 
 
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="/src/main.js"></script>
     <script src="./src/menu-data.js" type="module"></script>
     <script src="./src/menu-render.js" type="module"></script>
     <script src="./src/carrinho.js" type="module"></script>
+    <script>
+      new WOW().init();
+    </script>
   </body>
 </html>

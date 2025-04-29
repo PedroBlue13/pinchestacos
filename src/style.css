@@ -426,7 +426,6 @@ b {
   border-radius: 30px;
   padding: 12px 25px;
   cursor: pointer;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
@@ -452,6 +451,7 @@ b {
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: center; /* Centraliza horizontalmente */
   color: #333;
   text-decoration: none;
 }
@@ -776,7 +776,6 @@ footer {
     padding-bottom: 100px;
     text-align: center;
   }
-
   .servicos {
     padding: 40px 20px;
   }
@@ -791,9 +790,10 @@ footer {
   }
 
   .img-logo {
+    border: #000;
     margin-left: 0;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
   }
 
   /* 
@@ -908,7 +908,7 @@ footer {
   }
   
   .text-banner {
-    margin-bottom: 180px;
+    margin-bottom: 1px;
   }
   
   .btn-white,
@@ -941,45 +941,86 @@ footer {
   .mobile-hide {
     display: none !important;
   }
+  
   #navbarNavDropdown {
     background-color: var(--color-background);
-    position: absolute;
-    top: 100%;
+    position: fixed; /* Alterado para fixed em vez de absolute */
+    top: 0;
     left: 0;
-    right: 0;
+    bottom: 0;
+    width: 80%; /* Definir largura em vez de right: 0 */
     z-index: 1000;
-    padding: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transform: translateX(-100%); /* Esconde o menu fora da tela */
+    transition: transform 0.3s ease; /* Adiciona transição suave */
+    overflow-y: auto; /* Permite rolagem se o menu for muito grande */
+    height: 100vh; /* Altura total da viewport */
   }
   
+  /* Quando o menu está aberto */
+  #navbarNavDropdown.show {
+    transform: translateX(0); /* Traz o menu para a tela */
+  }
+  
+  /* Adiciona botão de fechar no menu */
+  #navbarNavDropdown::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: var(--color-red);
+    cursor: pointer;
+  }
+  
+  /* Overlay escuro quando o menu está aberto */
+  body.menu-open::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
   #navbarNavDropdown ul {
     flex-direction: column;
+    margin-top: 40px; /* Espaço para o botão fechar */
   }
   
   #navbarNavDropdown ul li {
     border-top: 0px var(--color-red) solid;
     border-bottom: 1px var(--color-red) solid;
     margin-bottom: 5px;
+    width: 100%;
   }
   
   .navbar-toggler {
     color: var(--color-background);
-    border: 2px solid var(--color-red);
-    padding: 5px 8px;
+    border: 2px solid var(--color-background);
+    padding: 10px 16px;
+    border-radius: 8px;
   }
+  
   .navbar-toggler-icon i {
     color: var(--color-background) !important;
   }
+  
   .Header{
     background-color: var(--color-red2);
     margin-top: 0rem!important;
     margin-bottom: 0rem!important;
   }
+  
   .banner{
     background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png")!important;
-    background-size: 200px;
-    padding-top: 5rem;
+    background-size: 100px;
+    padding-top: 5rem!important;
   }
+  
   .burrito_mobile {
     background-image: url('/public/img/b98b2eeb-ddbb-4c7e-8ca2-0f2959401745.jpeg');
     background-size: 100%;
@@ -994,8 +1035,9 @@ footer {
     margin-top: 20px;
     margin-bottom: 20px;
   }
-  
 }
+
+
 
 /* 
  * RESPONSIVE GRID FIXES
@@ -1023,3 +1065,75 @@ footer {
     background-size: 100px;
   }
 }
+
+
+
+
+
+
+/* Botao flutuante carrinho */
+  /* Estilos para o botão de atalho do carrinho */
+  #atalho_carrin {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #e74c3c; /* Vermelho padrão, compatível com seu design */
+    color: white;
+    border-radius: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999; /* Valor alto para garantir que fique visível */
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 0 16px;
+    height: 44px;
+    font-weight: 600;
+    min-width: 150px;
+  }
+  
+  #atalho_carrin:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  }
+  
+  #atalho_carrin:active {
+    transform: translateY(-1px);
+  }
+  
+  .atalho-texto {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  
+  .atalho-contador {
+    background-color: white;
+    color: #e74c3c;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Animação de pulso quando o contador é atualizado */
+  @keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .pulso {
+    animation: pulsar 0.5s ease-in-out;
+  }
+  
+  /* Esconder em desktop (telas maiores que 767px) */
+  @media (min-width: 768px) {
+    #atalho_carrin {
+      display: none !important;
+    }
+  }

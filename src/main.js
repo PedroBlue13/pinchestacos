@@ -565,3 +565,94 @@ function mostrarNotificacao(mensagem) {
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Elementos da navbar
+  const navbarToggler = document.querySelector('.navbar-toggler');
+  const navbarCollapse = document.getElementById('navbarNavDropdown');
+  
+  if (navbarToggler && navbarCollapse) {
+    // Função para fechar o menu
+    function closeMenu() {
+      if (navbarCollapse.classList.contains('show')) {
+        // Tenta usar a API do Bootstrap 5 se disponível
+        if (typeof bootstrap !== 'undefined') {
+          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+          if (bsCollapse) {
+            bsCollapse.hide();
+          } else {
+            // Fallback se não conseguir obter a instância
+            navbarCollapse.classList.remove('show');
+          }
+        } else {
+          // Fallback para Bootstrap 4 ou método manual
+          navbarCollapse.classList.remove('show');
+        }
+        
+        // Remove a classe do body que controla o overlay
+        document.body.classList.remove('menu-open');
+      }
+    }
+    
+    // Adicionar evento ao botão de menu
+    navbarToggler.addEventListener('click', function() {
+      setTimeout(function() {
+        if (navbarCollapse.classList.contains('show')) {
+          document.body.classList.add('menu-open');
+        } else {
+          document.body.classList.remove('menu-open');
+        }
+      }, 150);
+    });
+    
+    // Adicionar evento para o botão X (pseudo-elemento)
+    // Como não podemos acessar diretamente o pseudo-elemento, vamos usar uma área clicável
+    navbarCollapse.addEventListener('click', function(e) {
+      // Verificar se o clique foi na área do X (canto superior direito)
+      const rect = navbarCollapse.getBoundingClientRect();
+      // Define uma área maior para facilitar o clique no X (30x30 pixels)
+      if (e.clientX > rect.left + rect.width - 50 && e.clientX < rect.left + rect.width &&
+          e.clientY > rect.top && e.clientY < rect.top + 50) {
+        e.preventDefault();
+        closeMenu();
+      }
+    });
+    
+    // Adicionar evento para fechar o menu quando clicar em links
+    const navLinks = document.querySelectorAll('#navbarNavDropdown .nav-link');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        // Verificar se estamos em viewport mobile
+        if (window.innerWidth <= 767) {  // Combina com seu media query
+          // Se for link interno com hash, permitir comportamento normal após fechar
+          const href = this.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            closeMenu();
+            setTimeout(function() {
+              window.location.hash = href;
+            }, 350); // Tempo para animação completar
+          } else {
+            // Para links normais, apenas fechar o menu
+            closeMenu();
+          }
+        }
+      });
+    });
+    
+    // Adicionar evento para fechar o menu ao clicar no overlay
+    document.addEventListener('click', function(e) {
+      if (document.body.classList.contains('menu-open')) {
+        // Verificar se o clique foi fora do menu e não no botão do menu
+        if (!navbarCollapse.contains(e.target) && 
+            e.target !== navbarToggler && 
+            !navbarToggler.contains(e.target)) {
+          closeMenu();
+        }
+      }
+    });
+  }
+});
+
+
+
+
