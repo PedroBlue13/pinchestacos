@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Pinches Tacos — comida mexicana de rua em Curitiba | Água Verde</title>
+<meta name="description" content="Tacos, burritos, quesadillas e gringas na tortilha de milho artesanal. Comida de rua da Cidade do México no Água Verde, Curitiba. Monte seu pedido e envie pelo WhatsApp.">
+<link rel="canonical" href="https://pedroblue13.github.io/pinchestacos/">
+
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pinches Tacos">
+<meta property="og:title" content="Pinches Tacos — comida mexicana de rua em Curitiba">
+<meta property="og:description" content="Tacos, burritos, quesadillas e gringas na tortilha de milho artesanal. Comida de rua da Cidade do México no Água Verde, Curitiba.">
+<meta property="og:url" content="https://pedroblue13.github.io/pinchestacos/">
+<meta property="og:image" content="https://pedroblue13.github.io/pinchestacos/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d0b0a">
+
+<link rel="icon" href="img/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="img/logo-192.png">
+
+<link rel="preload" href="fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="img/hero-1100.webp"
+      imagesrcset="img/hero-700.webp 700w, img/hero-1100.webp 1100w"
+      imagesizes="(max-width: 1000px) 92vw, 46vw" fetchpriority="high">
+<link rel="stylesheet" href="css/styles.css">
+
+<script>
+/* Resolve o movimento antes da primeira pintura. No Windows, desligar os efeitos
+   de animação faz o navegador reportar prefers-reduced-motion: reduce — e o site
+   inteiro congelaria. Aqui reduzimos em vez de congelar. (armadilhas.md §3) */
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  var s = null;
+  try { s = localStorage.getItem('pt-motion'); } catch (e) {}
+  d.setAttribute('data-motion',
+    s || (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'reduced' : 'full'));
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Pinches Tacos",
+  "alternateName": "Pinches Tacos - comida mexicana",
+  "description": "Preparamos a comida de rua típica da Cidade do México, tais como tacos, gringa, burritos, quesadillas, micheladas e muito mais.",
+  "servesCuisine": "Mexicana",
+  "priceRange": "$$",
+  "url": "https://pedroblue13.github.io/pinchestacos/",
+  "image": "https://pedroblue13.github.io/pinchestacos/img/og.jpg",
+  "telephone": "+5541987316239",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Brasílio Itiberê, 3642",
+    "addressLocality": "Curitiba",
+    "addressRegion": "PR",
+    "postalCode": "80240-060",
+    "addressCountry": "BR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -25.450812, "longitude": -49.279151 },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "23" },
+  "sameAs": [
+    "https://www.instagram.com/pinchestacoscwb/",
+    "https://www.ifood.com.br/delivery/curitiba-pr/pinches-tacos----comida-mexicana-agua-verde/51c54763-f475-4708-a676-da5702b099d2"
+  ]
+}
+</script>
+
+<!-- HORÁRIOS — dado não confirmado, por isso não está no ar.
+     Quando o Pedro passar a grade, descomente o bloco abaixo, preencha e
+     descomente também a seção "Horários" no corpo da página (procure por
+     "BLOCO HORÁRIOS"). Passo a passo no README, seção "Horários".
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Pinches Tacos",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "18:00", "closes": "23:00" }
+  ]
+}
+</script>
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Como faço um pedido pelo site?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Monte sua sacola no cardápio, toque em Fazer pedido e preencha seus dados. O site abre o WhatsApp com o pedido já escrito — é só enviar. A confirmação, o prazo e a taxa de entrega vêm na conversa." } },
+    { "@type": "Question", "name": "Vocês entregam? Qual a taxa?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. A taxa e a área de entrega são combinadas na hora do pedido, pelo WhatsApp. Também estamos no iFood, onde a taxa aparece automaticamente pelo seu endereço." } },
+    { "@type": "Question", "name": "Tem opção vegetariana ou vegana?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Tem. Os 2 Tacos de Hongos (cogumelo com queijo gratinado) são vegetarianos, e o Burrito Paola Bracho, feito com carne de jaca, é vegano. No cardápio eles aparecem marcados." } },
+    { "@type": "Question", "name": "A comida é muito picante?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não. O picante vai sempre em embalagem separada, para você dosar. A única exceção é a Quesadilla de Tinga, que leva molho de chipotle no próprio recheio." } },
+    { "@type": "Question", "name": "Existe pedido mínimo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No iFood o pedido mínimo é de R$ 30,00. Para pedidos pelo WhatsApp, confirme com a gente na conversa." } }
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ============================================================ CABEÇALHO -->
+<header class="cabecalho" id="cabecalho">
+  <div class="env cabecalho__linha">
+    <a class="marca" href="#topo" aria-label="Pinches Tacos, ir para o topo">
+      <img class="marca__img" src="img/logo-96.webp" alt="" width="42" height="42" decoding="async">
+      <span>
+        <span class="marca__nome display">Pinches Tacos</span>
+        <span class="marca__sub">Comida mexicana de rua</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegação principal">
+      <a class="nav__link" href="#cardapio">Cardápio</a>
+      <a class="nav__link" href="#sobre">A casa</a>
+      <a class="nav__link" href="#local">Onde estamos</a>
+      <a class="nav__link" href="#duvidas">Dúvidas</a>
+    </nav>
+
+    <div class="cabecalho__acoes">
+      <button class="btn-sacola" type="button" id="abrir-sacola"
+              aria-haspopup="dialog" aria-controls="sacola">
+        <svg class="icone" aria-hidden="true"><use href="#i-sacola"></use></svg>
+        <span class="so-leitor">Abrir a sacola,</span>
+        <span class="sacola-contador" id="sacola-contador">0</span>
+        <span class="so-leitor">itens</span>
+      </button>
+
+      <button class="btn-menu" type="button" id="abrir-nav"
+              aria-expanded="false" aria-controls="nav">
+        <svg class="icone" aria-hidden="true"><use href="#i-menu"></use></svg>
+        <span class="so-leitor">Abrir o menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <span id="topo"></span>
+
+  <!-- ================================================================ HERO -->
+  <section class="hero">
+    <div class="hero__brilho" aria-hidden="true"></div>
+    <div class="env hero__grade">
+      <div class="hero__texto">
+        <p class="rotulo">Água Verde · Curitiba</p>
+
+        <h1 class="hero__titulo display">
+          <span class="linha">Taco de verdade</span>
+          <span class="linha destaque">é na tortilha</span>
+          <span class="linha">de milho.</span>
+        </h1>
+
+        <p class="hero__lead">
+          A comida de rua da Cidade do México, feita aqui: pastor, suadero, lengua e
+          longaniza na tortilha artesanal. O picante vai à parte — quem manda na dose é você.
+        </p>
+
+        <div class="hero__acoes">
+          <a class="btn btn--principal btn--g" href="#cardapio">
+            <svg class="icone" aria-hidden="true"><use href="#i-sacola"></use></svg>
+            Ver o cardápio
+          </a>
+          <a class="btn btn--linha btn--g" href="https://api.whatsapp.com/send?phone=5541987316239&amp;text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido."
+             target="_blank" rel="noopener">
+            <svg class="icone" aria-hidden="true"><use href="#i-zap"></use></svg>
+            Chamar no WhatsApp
+          </a>
+        </div>
+
+        <div class="hero__notas">
+          <p class="hero__nota">
+            <svg class="icone icone--cheio estrela" aria-hidden="true"><use href="#i-estrela"></use></svg>
+            <b>4,8</b> no iFood <span aria-hidden="true">·</span> 23 avaliações
+          </p>
+          <p class="hero__nota">
+            <svg class="icone" aria-hidden="true"><use href="#i-pin"></use></svg>
+            R. Brasílio Itiberê, 3642
+          </p>
+        </div>
+      </div>
+
+      <div class="hero__foto">
+        <picture>
+          <source type="image/webp"
+                  srcset="img/hero-700.webp 700w, img/hero-1100.webp 1100w"
+                  sizes="(max-width: 1000px) 92vw, 46vw">
+          <source type="image/jpeg"
+                  srcset="img/hero-700.jpg 700w, img/hero-1100.jpg 1100w"
+                  sizes="(max-width: 1000px) 92vw, 46vw">
+          <img src="img/hero-1100.jpg"
+               alt="Taco de pastor na tortilha de milho, com guacamole, cebola, coentro e abacaxi, servido em prato de metal."
+               width="1100" height="825" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================== FAIXA -->
+  <div class="faixa" aria-hidden="true">
+    <div class="faixa__trilho">
+      <div class="faixa__grupo">
+        <span class="faixa__item">Tortilha de milho artesanal</span>
+        <span class="faixa__item">Pastor · Suadero · Lengua</span>
+        <span class="faixa__item">Comida de rua da CDMX</span>
+        <span class="faixa__item">O picante vai à parte</span>
+        <span class="faixa__item">Burritos · Gringas · Quesadillas</span>
+      </div>
+      <div class="faixa__grupo">
+        <span class="faixa__item">Tortilha de milho artesanal</span>
+        <span class="faixa__item">Pastor · Suadero · Lengua</span>
+        <span class="faixa__item">Comida de rua da CDMX</span>
+        <span class="faixa__item">O picante vai à parte</span>
+        <span class="faixa__item">Burritos · Gringas · Quesadillas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ CARDÁPIO -->
+  <section class="secao" id="cardapio" aria-labelledby="t-cardapio">
+    <div class="env">
+      <div class="cardapio__topo">
+        <div class="secao__cabeca" style="margin-bottom:0">
+          <p class="rotulo">O cardápio</p>
+          <h2 class="secao__titulo display" id="t-cardapio">Escolha seu plato</h2>
+          <p class="secao__texto">
+            Toque em <b>Adicionar</b> para montar sua sacola. No fim, o pedido sai pronto
+            no WhatsApp — com endereço, forma de pagamento e observações.
+          </p>
+        </div>
+      </div>
+
+      <p class="sem-js">
+        <b>O carrinho precisa de JavaScript.</b> O cardápio inteiro, com os preços, está logo
+        abaixo. Para pedir, chame no
+        <a href="https://api.whatsapp.com/send?phone=5541987316239">WhatsApp (41) 98731-6239</a>
+        ou peça pelo <a href="https://www.ifood.com.br/delivery/curitiba-pr/pinches-tacos----comida-mexicana-agua-verde/51c54763-f475-4708-a676-da5702b099d2">iFood</a>.
+      </p>
+    </div>
+
+    <nav class="categorias" id="categorias" aria-label="Categorias do cardápio">
+      <div class="env">
+        <div class="categorias__rolo">
+<!--{{NAV_CATEGORIAS}}-->
+        </div>
+      </div>
+    </nav>
+
+    <div class="env">
+<!--{{GRUPOS}}-->
+    </div>
+  </section>
+
+  <!-- =============================================================== SOBRE -->
+  <section class="secao secao--escura" id="sobre" aria-labelledby="t-sobre">
+    <div class="env sobre__grade">
+      <div>
+        <p class="rotulo">A casa</p>
+        <h2 class="secao__titulo display" id="t-sobre" data-revela>Comida de rua, do jeito de lá</h2>
+        <p class="sobre__frase" data-revela>
+          Preparamos a comida de rua típica da <b>Cidade do México</b> — tacos, gringa,
+          burritos, quesadillas, micheladas e muito mais.
+        </p>
+        <p class="secao__texto" data-revela>
+          Na taquería mexicana o taco não vem em casca dura nem em tortilha de trigo: vem na
+          tortilha de milho, macia, com a carne, cebola, coentro e guacamole. O molho picante
+          fica no balcão, para cada um servir a sua dose. É esse taco que a gente faz.
+        </p>
+
+        <div class="numeros">
+          <div class="numero" data-revela>
+            <p class="numero__valor">4,8</p>
+            <p class="numero__rotulo">Nota no iFood, em 23 avaliações</p>
+          </div>
+          <div class="numero" data-revela>
+            <p class="numero__valor">7</p>
+            <p class="numero__rotulo">Recheios de taco, do pastor à lengua</p>
+          </div>
+          <div class="numero" data-revela>
+            <p class="numero__valor">37</p>
+            <p class="numero__rotulo">Itens no cardápio completo</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sobre__foto" data-revela>
+        <picture>
+          <source srcset="img/cardapio/chicharron.webp" type="image/webp">
+          <img src="img/cardapio/chicharron.jpg"
+               alt="Prato de chicharrón — pururuca crocante servida com guacamole fresco com tomate, cebola e coentro."
+               width="640" height="480" loading="lazy" decoding="async">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================== LOCAL -->
+  <section class="secao" id="local" aria-labelledby="t-local">
+    <div class="env local__grade">
+      <div>
+        <p class="rotulo">Onde estamos</p>
+        <h2 class="secao__titulo display" id="t-local">Água Verde, Curitiba</h2>
+
+        <div class="dados">
+          <div class="dado">
+            <span class="dado__icone"><svg class="icone" aria-hidden="true"><use href="#i-pin"></use></svg></span>
+            <div>
+              <p class="dado__rotulo">Endereço</p>
+              <p class="dado__valor">
+                <a href="https://www.google.com/maps/place/Pinches+Tacos/data=!4m2!3m1!1s0x0:0xdb7a6b29a68edff6"
+                   target="_blank" rel="noopener">
+                  R. Brasílio Itiberê, 3642 — Água Verde<br>Curitiba/PR, 80240-060
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="dado">
+            <span class="dado__icone"><svg class="icone" aria-hidden="true"><use href="#i-fone"></use></svg></span>
+            <div>
+              <p class="dado__rotulo">WhatsApp e telefone</p>
+              <p class="dado__valor"><a href="tel:+5541987316239">(41) 98731-6239</a></p>
+            </div>
+          </div>
+
+          <!-- BLOCO HORÁRIOS — descomente quando os horários estiverem confirmados.
+               Descomente também o JSON-LD de openingHoursSpecification no <head>.
+          <div class="dado">
+            <span class="dado__icone"><svg class="icone" aria-hidden="true"><use href="#i-relogio"></use></svg></span>
+            <div>
+              <p class="dado__rotulo">Horários</p>
+              <p class="dado__valor">
+                Quarta a domingo, 18h às 23h<br>
+                Segunda e terça, fechado
+              </p>
+            </div>
+          </div>
+          -->
+        </div>
+
+        <div class="contato__botoes">
+          <a class="btn btn--zap" href="https://api.whatsapp.com/send?phone=5541987316239&amp;text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida."
+             target="_blank" rel="noopener">
+            <svg class="icone" aria-hidden="true"><use href="#i-zap"></use></svg> WhatsApp
+          </a>
+          <a class="btn btn--linha" href="https://www.instagram.com/pinchestacoscwb/" target="_blank" rel="noopener">
+            <svg class="icone" aria-hidden="true"><use href="#i-insta"></use></svg> Instagram
+          </a>
+          <a class="btn btn--linha" href="https://www.ifood.com.br/delivery/curitiba-pr/pinches-tacos----comida-mexicana-agua-verde/51c54763-f475-4708-a676-da5702b099d2"
+             target="_blank" rel="noopener">
+            <svg class="icone" aria-hidden="true"><use href="#i-fora"></use></svg> Pedir no iFood
+          </a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <iframe title="Mapa com a localização do Pinches Tacos na Rua Brasílio Itiberê, 3642"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.734083262669!2d-49.2817627!3d-25.4508257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce546ed4a589f%3A0xdb7a6b29a68edff6!2sPinches%20Tacos!5e0!3m2!1spt-BR!2sbr!4v1714420003975!5m2!1spt-BR!2sbr"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= DÚVIDAS -->
+  <section class="secao secao--escura" id="duvidas" aria-labelledby="t-duvidas">
+    <div class="env">
+      <div class="secao__cabeca">
+        <p class="rotulo">Dúvidas</p>
+        <h2 class="secao__titulo display" id="t-duvidas">Antes de pedir</h2>
+      </div>
+
+      <div class="faq" id="faq">
+        <div class="faq__item">
+          <h3>
+            <button class="faq__botao" type="button" aria-expanded="false" aria-controls="faq-1">
+              Como faço um pedido pelo site?
+              <span class="faq__sinal" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__resposta" id="faq-1" hidden>
+            Monte sua sacola no cardápio, toque em <b>Fazer pedido</b> e preencha seus dados.
+            O site abre o WhatsApp com o pedido já escrito — é só enviar. A confirmação, o
+            prazo e a taxa de entrega vêm na conversa.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__botao" type="button" aria-expanded="false" aria-controls="faq-2">
+              Vocês entregam? Qual a taxa?
+              <span class="faq__sinal" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__resposta" id="faq-2" hidden>
+            Sim. A taxa e a área de entrega são combinadas na hora do pedido, pelo WhatsApp.
+            Também estamos no iFood, onde a taxa aparece automaticamente pelo seu endereço.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__botao" type="button" aria-expanded="false" aria-controls="faq-3">
+              Tem opção vegetariana ou vegana?
+              <span class="faq__sinal" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__resposta" id="faq-3" hidden>
+            Tem. Os <b>2 Tacos de Hongos</b> (cogumelo com queijo gratinado) são vegetarianos,
+            e o <b>Burrito Paola Bracho</b>, feito com carne de jaca, é vegano. No cardápio
+            eles aparecem marcados com o selo.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__botao" type="button" aria-expanded="false" aria-controls="faq-4">
+              A comida é muito picante?
+              <span class="faq__sinal" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__resposta" id="faq-4" hidden>
+            Não. O picante vai sempre em embalagem separada, para você dosar do seu jeito.
+            A única exceção é a <b>Quesadilla de Tinga</b>, que leva molho de chipotle no
+            próprio recheio — ela vem marcada como picante no cardápio.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <h3>
+            <button class="faq__botao" type="button" aria-expanded="false" aria-controls="faq-5">
+              Existe pedido mínimo?
+              <span class="faq__sinal" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq__resposta" id="faq-5" hidden>
+            No iFood o pedido mínimo é de <b>R$ 30,00</b>. Para pedidos pelo WhatsApp,
+            confirme com a gente na conversa.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= CTA -->
+  <section class="secao cta">
+    <div class="env">
+      <div class="cta__caixa">
+        <h2 class="cta__titulo display">Bora de taco?</h2>
+        <p class="cta__texto">
+          Monte sua sacola no cardápio e mande pelo WhatsApp — ou peça pelo iFood,
+          se preferir acompanhar a entrega por lá.
+        </p>
+        <div class="cta__acoes">
+          <a class="btn btn--principal btn--g" href="#cardapio">
+            <svg class="icone" aria-hidden="true"><use href="#i-sacola"></use></svg>
+            Montar meu pedido
+          </a>
+          <a class="btn btn--linha btn--g" href="https://www.ifood.com.br/delivery/curitiba-pr/pinches-tacos----comida-mexicana-agua-verde/51c54763-f475-4708-a676-da5702b099d2"
+             target="_blank" rel="noopener">
+            <svg class="icone" aria-hidden="true"><use href="#i-fora"></use></svg>
+            Pedir no iFood
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================== RODAPÉ -->
+<footer class="rodape">
+  <div class="env">
+    <div class="rodape__grade">
+      <div>
+        <a class="marca" href="#topo">
+          <img class="marca__img" src="img/logo-96.webp" alt="" width="42" height="42" loading="lazy" decoding="async">
+          <span>
+            <span class="marca__nome display">Pinches Tacos</span>
+            <span class="marca__sub">Comida mexicana de rua</span>
+          </span>
+        </a>
+        <p class="rodape__sobre">
+          Comida de rua típica da Cidade do México, no Água Verde, em Curitiba.
+          Tacos, gringas, burritos, quesadillas e micheladas.
+        </p>
+      </div>
+
+      <div>
+        <p class="rodape__titulo">O site</p>
+        <ul class="rodape__lista">
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#sobre">A casa</a></li>
+          <li><a href="#local">Onde estamos</a></li>
+          <li><a href="#duvidas">Dúvidas</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="rodape__titulo">Pedidos e contato</p>
+        <ul class="rodape__lista">
+          <li><a href="https://api.whatsapp.com/send?phone=5541987316239" target="_blank" rel="noopener">WhatsApp (41) 98731-6239</a></li>
+          <li><a href="https://www.instagram.com/pinchestacoscwb/" target="_blank" rel="noopener">@pinchestacoscwb</a></li>
+          <li><a href="https://www.ifood.com.br/delivery/curitiba-pr/pinches-tacos----comida-mexicana-agua-verde/51c54763-f475-4708-a676-da5702b099d2" target="_blank" rel="noopener">Pedir no iFood</a></li>
+          <li><a href="https://www.google.com/maps/place/Pinches+Tacos/data=!4m2!3m1!1s0x0:0xdb7a6b29a68edff6" target="_blank" rel="noopener">Como chegar</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rodape__fim">
+      <p>© <span id="ano">2026</span> Pinches Tacos. Todos os direitos reservados.</p>
+      <p>
+        Bebida alcoólica só para maiores de 18 anos. ·
+        <button class="btn-motion" type="button" id="btn-motion">Ativar animações</button>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- =============================================================== SACOLA -->
+<div class="tela" id="tela" hidden></div>
+
+<aside class="gaveta" id="sacola" role="dialog" aria-modal="true"
+       aria-labelledby="sacola-titulo" hidden>
+  <div class="gaveta__topo">
+    <h2 class="gaveta__titulo" id="sacola-titulo">Sua sacola</h2>
+    <button class="btn-fechar" type="button" id="fechar-sacola">
+      <svg class="icone" aria-hidden="true"><use href="#i-fechar"></use></svg>
+      <span class="so-leitor">Fechar a sacola</span>
+    </button>
+  </div>
+
+  <div class="passos" id="passos" hidden>
+    <span class="passo" data-passo="1"><span class="passo__barra"></span>Sacola</span>
+    <span class="passo" data-passo="2"><span class="passo__barra"></span>Entrega</span>
+    <span class="passo" data-passo="3"><span class="passo__barra"></span>Revisão</span>
+  </div>
+
+  <div class="gaveta__corpo" id="sacola-corpo"></div>
+  <div class="gaveta__pe" id="sacola-pe"></div>
+</aside>
+
+<!-- ========================================================= MODAL DO PRATO -->
+<div class="modal" id="modal-prato" role="dialog" aria-modal="true"
+     aria-labelledby="modal-nome" hidden>
+  <div class="modal__caixa">
+    <button class="modal__fechar" type="button" id="fechar-modal">
+      <svg class="icone" aria-hidden="true"><use href="#i-fechar"></use></svg>
+      <span class="so-leitor">Fechar</span>
+    </button>
+    <div class="modal__foto" id="modal-foto"></div>
+    <div class="modal__corpo">
+      <h3 class="modal__nome" id="modal-nome"></h3>
+      <div id="modal-corpo"></div>
+    </div>
+    <div class="modal__pe" id="modal-pe"></div>
+  </div>
+</div>
+
+<!-- ============================================================ FLUTUANTE -->
+<button class="flutuante" type="button" id="flutuante" data-ver="nao">
+  <svg class="icone" aria-hidden="true"><use href="#i-sacola"></use></svg>
+  <span id="flutuante-txt">Ver sacola</span>
+  <span class="flutuante__total" id="flutuante-total">R$ 0,00</span>
+</button>
+
+<div class="avisos" id="avisos" role="status" aria-live="polite"></div>
+
+<!-- ============================================================== ÍCONES -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-sacola" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-menos" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-lixo" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-fechar" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-fone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M3 21l1.7-5.1A8.9 8.9 0 1 1 8.2 19.4L3 21z"/><path d="M8.5 8.8c0-.3.2-.5.5-.5h1c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.5l-.6.6a6.7 6.7 0 0 0 2.9 2.9l.6-.6c.2-.2.4-.2.6-.1l1.5.6c.2.1.4.3.4.5v1c0 .3-.2.5-.5.5A8 8 0 0 1 8.5 8.8z"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-fora" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></symbol>
+    <symbol id="i-estrela" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2l-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-volta" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+  </defs>
+</svg>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

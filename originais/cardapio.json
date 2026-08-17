@@ -1,0 +1,404 @@
+{
+  "grupos": [
+    {
+      "cat": "Pinches Promos",
+      "itens": [
+        {
+          "nome": "1 Burrito Jefe de Jefes + 1 Cerveja Flying Fish Limão",
+          "desc": "Burrito recheado com suadero (carne bovina), queijo, cebola, coentro, guacamole, batata frita e sour cream.",
+          "centavos": 4250,
+          "img": "202608041815_4DB1_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": true
+        },
+        {
+          "nome": "1 Burrito Vegetariano + 1 Cerveja Budweiser Zero",
+          "desc": "Escolha entre burrito de cogumelos ou de carne de jaca.",
+          "centavos": 4500,
+          "img": "202608041828_T8IX_i.jpg",
+          "serve": null,
+          "selos": [
+            "Vegetariano"
+          ],
+          "promo": true
+        }
+      ]
+    },
+    {
+      "cat": "Entradas",
+      "itens": [
+        {
+          "nome": "Chicharron",
+          "desc": "Pururuca com guacamole",
+          "centavos": 4000,
+          "img": "202411301919_0QS3_i.jpg",
+          "serve": 2,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Totopos",
+          "desc": "Totopos com Guacamole ou pico de gallo.",
+          "centavos": 4400,
+          "img": "202411301919_32K0_i.jpg",
+          "serve": 2,
+          "selos": [],
+          "promo": false
+        }
+      ]
+    },
+    {
+      "cat": "Tacos",
+      "itens": [
+        {
+          "nome": "2 Tacos Lengua",
+          "desc": "2 tacos de Lingua Bovina, na tortilha de milho artesanal, acompanha coentro, cebola e guacamole",
+          "centavos": 3600,
+          "img": "202411301926_TSRP_i.jpg",
+          "serve": 1,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 Tacos Longaniza",
+          "desc": "2 Tacos com linguiça de carne suína na tortilla de milho artesanal. Acompanha cebola, coentro e guacamole. O picante é enviado a parte.",
+          "centavos": 2800,
+          "img": "202411301925_2T43_i.jpg",
+          "serve": 1,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 Tacos Campechano",
+          "desc": "2 Tacos com matambre, linguiça suína e pururuca, tudo isso na tortilla de milho artesanal. Acompanha cebola, coentro e guacamole. O picante é enviado a parte.",
+          "centavos": 3500,
+          "img": "202411301921_76EG_i.jpg",
+          "serve": 1,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 Tacos Pastor",
+          "desc": "2 tacos com pastor (carne suína) e abacaxi na tortilla de milho artesanal. Acompanha cebola, coentro e guacamole. O picante é enviado a parte.",
+          "centavos": 3400,
+          "img": "202411301931_61U8_i.jpg",
+          "serve": 1,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 Tacos de Mixiote",
+          "desc": "2 Tacos com peito de frango ao molho, na tortilla de milho artesanal. Acompanha cebola.",
+          "centavos": 3200,
+          "img": "202504091837_35SN_i.jpg",
+          "serve": 1,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 tacos de hongos",
+          "desc": "2 tacos de cogumelo com queijo gratinado, na tortilha de milho artesanal.",
+          "centavos": 3500,
+          "img": "202503232152_F331_i.jpg",
+          "serve": 1,
+          "selos": [
+            "Vegetariano"
+          ],
+          "promo": false
+        },
+        {
+          "nome": "2 Tacos Suadero",
+          "desc": "2 tacos de matambre, acompanhado na nossa tortilha de milho artesanatl, acompanha cebola, coentro e guacamole.",
+          "centavos": 3400,
+          "img": "202503232147_476U_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        }
+      ]
+    },
+    {
+      "cat": "Quesadillas",
+      "itens": [
+        {
+          "nome": "2 Quesadillas de Queso",
+          "desc": "Quesadilla feita com tortilla de milho, recheada com queijo. 2 unidades",
+          "centavos": 2460,
+          "img": "202601101824_4ABM_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 Quesadilla de Chicharrón Prensado",
+          "desc": "2 unidades de Quesadilla feita com tortilla de milho, recheada com torresmo prensado e queijo.",
+          "centavos": 3690,
+          "img": "202601101837_3811_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 Quesadilla de Picadillo",
+          "desc": "Quesadilla feita com tortilla de milho, recheada com carne moida e queijo. 2 unidades",
+          "centavos": 3690,
+          "img": "202601101826_MRNA_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 Quesadilla de Tinga",
+          "desc": "Quesadilla de tortilla de milho, recheada com peito de frango ao molho de chipotle ( picante)",
+          "centavos": 3690,
+          "img": "202601101828_46HD_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "2 Quesadilla de Suadero",
+          "desc": "Quesadilla de tortilla de milho, recheada com peito de boi e queijo. 2 unidades",
+          "centavos": 3790,
+          "img": "202601101837_3811_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        }
+      ]
+    },
+    {
+      "cat": "Burritos",
+      "itens": [
+        {
+          "nome": "Burritos El Califas",
+          "desc": "Burrito com pastor (carne suina), queijo, batata frita, cebola, coentro e guacamole. O picante será enviado a parte.",
+          "centavos": 4250,
+          "img": "202411301936_4565_i.jpg",
+          "serve": 1,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Burritos El Mero Mero",
+          "desc": "Burritos recheado com cogumelo paris, queijo, cebola, centro, batata frita e guacamole.",
+          "centavos": 4400,
+          "img": "202411301938_5MXF_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Burritos El Jefe de Jefes",
+          "desc": "Burrito recheado com suadero, queijo, cebola, coentro, guacamole e batata frita.",
+          "centavos": 4250,
+          "img": "202411301940_OTM0_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Burritos El Soplón",
+          "desc": "Burrito recheado com língua bovina, queijo cebola, coentro, batata frita e guacamole.",
+          "centavos": 4400,
+          "img": "202411301945_52KR_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Burrito Paola Bracho",
+          "desc": "Burrito com carne de jaca estilo pastor com batata frita, cebola, abacaxi, coentro e guacamole. O picante será enviado a parte. Caso queira queijo, por favor avisar!",
+          "centavos": 4200,
+          "img": "202504091839_05LE_i.jpg",
+          "serve": null,
+          "selos": [
+            "Vegano",
+            "Vegetariano"
+          ],
+          "promo": false
+        },
+        {
+          "nome": "Burrito El Gallo de Oro",
+          "desc": "Burrito com peito de frango ao molho, batata frita, queijo, cebola, coentro, guacamole e sour cream. Caso não queira algum dos ingredietes, avisar. O picante será enviado a parte.",
+          "centavos": 4200,
+          "img": "202507011807_508P_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Burrito El Mistico",
+          "desc": "Burrito recheado com peito de boi e linguiça de pernil, batata frita, guacamole, queijo, cebola, coentro e sour cream.",
+          "centavos": 4400,
+          "img": "202601101823_30VD_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        }
+      ]
+    },
+    {
+      "cat": "Gringa",
+      "itens": [
+        {
+          "nome": "Gringa Pastor",
+          "desc": "Tortillas de trigo, recheada com pastor (carne suína) , abacaxi, queijo, cebola, coentro e guacamole. O picante será enviado a parte.",
+          "centavos": 3400,
+          "img": "202411301940_OM28_i.jpg",
+          "serve": 1,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Gringa Suadero",
+          "desc": "Tortilla de trigo, recheada com carne bovina, queijo, cebola, coentro e guacamole! Ay mamá!!",
+          "centavos": 3400,
+          "img": "202504091839_V208_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Gringa Campechano",
+          "desc": "Tortilla de trigo recheada com carne bovina e linguiça de pernil, acompanha queijo, cebola, coentro e guacamole.",
+          "centavos": 3300,
+          "img": "202601091902_8R5M_i.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        }
+      ]
+    },
+    {
+      "cat": "Bebidas",
+      "itens": [
+        {
+          "nome": "Água Tônica Antarctica 350ml",
+          "desc": "Lata 350ml",
+          "centavos": 700,
+          "img": "202303161159_lm2757q9s4.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Cerveja Cero Sunbrew Zero Álcool Corona 330ml",
+          "desc": "",
+          "centavos": 1400,
+          "img": "202404151618_ixuklb5wm5e.png",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Cerveja Extra Corona 330ml",
+          "desc": "Produto para maiores de 18 anos",
+          "centavos": 1400,
+          "img": "202305150834_8b7jjqafpw5.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Cerveja Sol Premium 330ml",
+          "desc": "Produto Para Maiores de 18 Anos",
+          "centavos": 1400,
+          "img": "202210190247_jiu0krh6yhp.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Cerveja Stella Artois Pure Gold Sem Glúten Long Neck 330ml",
+          "desc": "Produto Para Maiores de 18 Anos",
+          "centavos": 1400,
+          "img": "202510031218_meps58i92n.jpeg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Coca - Cola Lata 350 Ml",
+          "desc": "Lata Unidade",
+          "centavos": 900,
+          "img": "202210192314_fetzfw2suyt.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Refrigerante Antarctica Guaraná Zero Açúcar",
+          "desc": "",
+          "centavos": 900,
+          "img": null,
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Refrigerante Coca Cola Zero Lata 310ml",
+          "desc": "Lata 350ml.",
+          "centavos": 900,
+          "img": "202604091025_mhw6dd4fz4c.png",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Refrigerante Guaraná Antarctica Lata 350ml",
+          "desc": "",
+          "centavos": 900,
+          "img": "202510032039_ui6mrm4z3g.jpeg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Água Crystal Sem Gás 500ml",
+          "desc": "Garrafa 500ml",
+          "centavos": 650,
+          "img": "202210202131_3jsfvahzku6.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        },
+        {
+          "nome": "Água Crystal com Gás 500ml",
+          "desc": "Garrafa 500ml",
+          "centavos": 750,
+          "img": "202210180055_qcd4li6mk2q.jpg",
+          "serve": null,
+          "selos": [],
+          "promo": false
+        }
+      ]
+    }
+  ],
+  "com_combo": [
+    "2 Quesadilla de Picadillo",
+    "2 Quesadilla de Suadero",
+    "2 Quesadilla de Tinga",
+    "2 Quesadillas de Queso",
+    "2 Tacos Campechano",
+    "2 Tacos Lengua",
+    "2 Tacos Longaniza",
+    "2 Tacos Pastor",
+    "2 Tacos Suadero",
+    "2 Tacos de Mixiote",
+    "2 tacos de hongos",
+    "Burrito El Gallo de Oro",
+    "Burrito El Mistico",
+    "Burrito Paola Bracho",
+    "Burritos El Califas",
+    "Burritos El Jefe de Jefes",
+    "Burritos El Mero Mero",
+    "Burritos El Soplón",
+    "Chicharron",
+    "Gringa Campechano",
+    "Gringa Pastor",
+    "Gringa Suadero",
+    "Totopos"
+  ]
+}
